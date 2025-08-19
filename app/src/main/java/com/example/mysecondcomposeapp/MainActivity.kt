@@ -11,8 +11,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.mysecondcomposeapp.components.MyRadioButtonList
+import com.example.mysecondcomposeapp.components.MySlider
 
-import com.example.mysecondcomposeapp.components.layout.TriStateCheckBoxDemo
 import com.example.mysecondcomposeapp.ui.theme.MySecondComposeAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MySecondComposeAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    TriStateCheckBoxDemo(Modifier.padding(innerPadding))
+                    MySlider(Modifier.padding(innerPadding))
                 }
             }
         }

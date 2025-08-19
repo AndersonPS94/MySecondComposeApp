@@ -1,4 +1,4 @@
-package com.example.mysecondcomposeapp.components.layout
+package com.example.mysecondcomposeapp.components
 
 import com.example.mysecondcomposeapp.R
 import androidx.compose.animation.core.animateFloatAsState
