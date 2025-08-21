@@ -11,8 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.mysecondcomposeapp.components.MyDropDownItem
+import com.example.mysecondcomposeapp.components.MyDropDownMenu
+import com.example.mysecondcomposeapp.components.MyExposedDropDownMenu
 import com.example.mysecondcomposeapp.components.MyRadioButtonList
+import com.example.mysecondcomposeapp.components.MyRangeSlider
 import com.example.mysecondcomposeapp.components.MySlider
+import com.example.mysecondcomposeapp.components.MySliderAdvance
 
 import com.example.mysecondcomposeapp.ui.theme.MySecondComposeAppTheme
 
@@ -23,7 +28,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MySecondComposeAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MySlider(Modifier.padding(innerPadding))
+                    MyExposedDropDownMenu(Modifier.padding(innerPadding))
                 }
             }
         }
