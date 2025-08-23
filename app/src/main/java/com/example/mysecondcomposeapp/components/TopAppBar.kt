@@ -1,5 +1,13 @@
 package com.example.mysecondcomposeapp.components
 
+import androidx.compose.foundation.clickable
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -14,35 +22,41 @@ import com.example.mysecondcomposeapp.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyTopAppBar(modifier: Modifier = Modifier) {
+fun MyTopAppBar(modifier: Modifier = Modifier, onNavSelected: () -> Unit) {
 
-    TopAppBar(title = { Text("Minha aplicação")},
+    CenterAlignedTopAppBar(title = { Text("Minha aplicação")},
         navigationIcon = { Icon(
-            painter = painterResource(R.drawable.ic_personita_24),
-            contentDescription = ""
+            Icons.Default.Menu,
+            contentDescription = "",
+            tint = Color.White,
+
+            modifier = modifier
+                .clickable{
+                    onNavSelected()
+                }
         )
           },
 
         actions = {
             Icon(
-                painter = painterResource(R.drawable.ic_personita_24),
+                Icons.Default.AccountBox,
                 contentDescription = ""
             )
             Icon(
-                painter = painterResource(R.drawable.ic_personita_24),
+                Icons.Default.CheckCircle,
                 contentDescription = ""
             )
             Icon(
-                painter = painterResource(R.drawable.ic_personita_24),
+                Icons.Default.Add,
                 contentDescription = "",
-                tint = Color.Yellow
+
             )
     },
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = Color.Gray,
             titleContentColor = Color.White,
             navigationIconContentColor = Color.Magenta,
-            actionIconContentColor = Color.Red,
+            actionIconContentColor = Color.White,
             scrolledContainerColor = Color.Blue
             ),
         )
