@@ -120,12 +120,3 @@ fun MyModalDrawer(drawerState: DrawerState, content: @Composable (() -> Unit)) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun MyModalDrawerPreview() {
-    MyModalDrawer(drawerState = DrawerState(DrawerValue.Open)) {
-        Text(text = "Conteúdo")
-
-
-    }
-}

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.DrawerValue
+import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -17,15 +18,26 @@ import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.mysecondcomposeapp.components.MyCustomDialog
+import com.example.mysecondcomposeapp.components.MyDateDialog
+import com.example.mysecondcomposeapp.components.MyDialogs
+import com.example.mysecondcomposeapp.components.MyFAB
 import com.example.mysecondcomposeapp.components.MyModalDrawer
 import com.example.mysecondcomposeapp.components.MyNavigationBar
+import com.example.mysecondcomposeapp.components.MyTimePicker
 import com.example.mysecondcomposeapp.components.MyTopAppBar
+import com.example.mysecondcomposeapp.components.advance.InteractionSourceExample
+import com.example.mysecondcomposeapp.components.advance.MyLaunchedEffect
+import com.example.mysecondcomposeapp.components.model.PokemonCombat
 
 import com.example.mysecondcomposeapp.ui.theme.MySecondComposeAppTheme
 import kotlinx.coroutines.launch
@@ -40,16 +52,27 @@ class MainActivity : ComponentActivity() {
                 val snackBarHostState = remember { SnackbarHostState() }
                 val scope = rememberCoroutineScope()
 
+                var showDialog: Boolean by remember { mutableStateOf(false) }
+                val pokemonCombat = PokemonCombat("Pikachu", "Gengar")
+
+
+                MyCustomDialog(
+                    showDialog = showDialog,
+                    pokemonCombat = pokemonCombat,
+                    onStartCombat = {
+                        //iniciar combate
+                        showDialog = false
+                    },
+                    onDismissDialog = {showDialog = false})
 
                 MyModalDrawer (drawerState){
 
-
                     Scaffold(
                         modifier = Modifier.fillMaxSize(),
-                        topBar = { MyTopAppBar{ scope.launch { drawerState.open() } } },
+                        topBar = { MyTopAppBar{ scope.launch { drawerState.close() } } },
                         snackbarHost = { SnackbarHost(hostState = snackBarHostState) },
-//                    floatingActionButton = {MyFAB()},
-//                    floatingActionButtonPosition = FabPosition.Center,
+                        floatingActionButton = {MyFAB{showDialog = true}},
+                    floatingActionButtonPosition = FabPosition.Center,
                         bottomBar = { MyNavigationBar() }
                     )
                     { innerPadding ->
@@ -78,6 +101,8 @@ class MainActivity : ComponentActivity() {
                                     }
                                 }
                             })
+                            //InteractionSourceExample()
+                            MyLaunchedEffect(onFinished = {})
                         }
                     }
                 }
