@@ -27,17 +27,23 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.mysecondcomposeapp.components.MyAdvanceList
+import com.example.mysecondcomposeapp.components.MyBasicList
 import com.example.mysecondcomposeapp.components.MyCustomDialog
 import com.example.mysecondcomposeapp.components.MyDateDialog
 import com.example.mysecondcomposeapp.components.MyDialogs
 import com.example.mysecondcomposeapp.components.MyFAB
+import com.example.mysecondcomposeapp.components.MyGridList
 import com.example.mysecondcomposeapp.components.MyModalDrawer
 import com.example.mysecondcomposeapp.components.MyNavigationBar
 import com.example.mysecondcomposeapp.components.MyTimePicker
 import com.example.mysecondcomposeapp.components.MyTopAppBar
+import com.example.mysecondcomposeapp.components.ScrollList
 import com.example.mysecondcomposeapp.components.advance.InteractionSourceExample
+import com.example.mysecondcomposeapp.components.advance.MyDerivadSateteOf
 import com.example.mysecondcomposeapp.components.advance.MyLaunchedEffect
 import com.example.mysecondcomposeapp.components.model.PokemonCombat
+import com.example.mysecondcomposeapp.components.navigation.NavigationWrapper
 
 import com.example.mysecondcomposeapp.ui.theme.MySecondComposeAppTheme
 import kotlinx.coroutines.launch
@@ -65,7 +71,8 @@ class MainActivity : ComponentActivity() {
                     },
                     onDismissDialog = {showDialog = false})
 
-                MyModalDrawer (drawerState){
+                NavigationWrapper()
+                /*MyModalDrawer (drawerState){
 
                     Scaffold(
                         modifier = Modifier.fillMaxSize(),
@@ -82,7 +89,7 @@ class MainActivity : ComponentActivity() {
                                 .padding(innerPadding)
                                 .background(color = Color.Cyan),
                             contentAlignment = Alignment.Center
-                        ) {
+                        ) {*//*
                             Text("Esta é minha tela", modifier = Modifier.clickable {
                                 scope.launch {
                                     val result = snackBarHostState.showSnackbar(
@@ -100,12 +107,17 @@ class MainActivity : ComponentActivity() {
 
                                     }
                                 }
-                            })
+                            })*//*
                             //InteractionSourceExample()
-                            MyLaunchedEffect(onFinished = {})
+                            //MyLaunchedEffect(onFinished = {})
+                            //MyDerivadSateteOf()
+                            //MyBasicList(onItemClick = {})
+                            //MyAdvanceList()
+                            //ScrollList()
+                            //MyGridList()
                         }
                     }
-                }
+                }*/
             }
         }
     }
